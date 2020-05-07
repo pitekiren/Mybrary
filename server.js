@@ -22,10 +22,10 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 //Connect to mnogDB
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 const db = mongoose.connection;
-db.on("error", error => console.error(error));
+db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("connected to MongoDb"));
 //Using a router
 app.use("/", indexRouter);
